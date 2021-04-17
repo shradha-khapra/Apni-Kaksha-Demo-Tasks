@@ -1,0 +1,25 @@
+{
+  "name": "apni-kaksha-demo-tasks",
+  "version": "1.0.0",
+  "description": "A store of all the demo tasks submitted by candidates as part of AK interviews.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamnishantgarg/Apni-Kaksha-Demo-Tasks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamnishantgarg/Apni-Kaksha-Demo-Tasks/issues"
+  },
+  "homepage": "https://github.com/iamnishantgarg/Apni-Kaksha-Demo-Tasks#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.4",
+    "nodemon": "^2.0.7"
+  }
+}
