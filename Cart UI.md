@@ -7,6 +7,10 @@
 - Now talking about the Cart Page it will also have a appbar and then below there are all the product which user added and it will show number of products user have added and total price of these products (Remember User can Add multilple products).
 - Once completed generate the APK and upload the repository with the Apk and submit the link to **Shradha**
 
+Product Page - https://github.com/shradha-khapra/Apni-Kaksha-Demo-Tasks/edit/main/assets/product.png
+
+Cart Page - https://github.com/shradha-khapra/Apni-Kaksha-Demo-Tasks/edit/main/assets/cart.png
+
 Note:- 
 - Please name you repository as Candidate name (like:- **yash-bothra**)
 - It will be recommended if you commit as you are coding and developing the app.
