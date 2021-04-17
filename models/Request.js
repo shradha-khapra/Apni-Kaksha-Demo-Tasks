@@ -11,7 +11,7 @@ const requestSchema = mongoose.Schema({
         refs: 'doctors',
         required: true
     },
-    isApproaved: {
+    isApproved: {
         type: Boolean,
         default: false
     },

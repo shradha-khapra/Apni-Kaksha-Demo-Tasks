@@ -1,10 +1,27 @@
 const express = require('express');
 const app = express();
 const connectDb = require('./config/db');
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
+
+//apis 
+const doctor = require('./apis/doctor')
+const patient = require('./apis/patient')
+
+
+
+// body parsing
+app.use(bodyParser({ extended: false }));
 
 //connecting to DB
 connectDb();
+
+
+// doctors api
+app.use('/api/doctor', doctor);
+
+// patients api
+app.use('/api/patient', patient);
 
 app.get('/', (req, res, next) => {
     return res.send('Welcome to apni kaksha')

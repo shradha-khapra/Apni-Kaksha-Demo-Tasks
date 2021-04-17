@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/iamnishantgarg/Apni-Kaksha-Demo-Tasks#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "config": "^3.3.6",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.21",
     "mongoose": "^5.12.4",
     "nodemon": "^2.0.7"
   }
