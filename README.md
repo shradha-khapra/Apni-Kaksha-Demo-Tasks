@@ -3,9 +3,7 @@
 A store of all the demo tasks submitted by candidates as part of AK interviews.
 
 ### [Cart UI (FrontEnd Question)](https://github.com/shradha-khapra/Apni-Kaksha-Demo-Tasks/blob/main/Cart%20UI.md)
-### Frontend Instructions (Flutter) : 
-#### Refer to the link above.
-#### Make a pull request to the frontend branch.
+### [Medical Resource API (Backend Question)](https://github.com/shradha-khapra/Apni-Kaksha-Demo-Tasks/blob/main/Medical%20Resource%20API.md)
 
 ### Hey Candidate, If you have any other doubts related to these questions please get in touch with Shradha. 
 
