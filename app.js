@@ -2,13 +2,15 @@ const express = require('express');
 const app = express();
 const connectDb = require('./config/db');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
 //apis 
 const doctor = require('./apis/doctor')
 const patient = require('./apis/patient')
 
-
+// enabling cross origin requests
+app.use(cors());
 
 // body parsing
 app.use(bodyParser({ extended: false }));
