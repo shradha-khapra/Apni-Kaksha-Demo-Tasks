@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "ad37cf6f-828d-4019-8a29-e0089c6f975b",
+		"name": "Apni kaksha",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "doctor",
+			"item": [
+				{
+					"name": "Create doctor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Nishant\",\n    \"email\":\"nishant@gmail.com\",\n    \"password\":\"1234\",\n    \"specialty\":\"heart\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/doctor",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"doctor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login doctor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"doctor-token\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"nishant@gmail.com\",\n    \"password\":\"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/doctor/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"doctor",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pending request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{doctor-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/doctor/request/pending",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"doctor",
+								"request",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get approved request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{doctor-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/doctor/request/approved",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"doctor",
+								"request",
+								"approved"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "approve a request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{doctor-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"request\":121\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/doctor/request/approve",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"doctor",
+								"request",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Create patient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Nishant\",\n    \"email\":\"nishant@gmail.com\",\n    \"password\":\"1234\",\n    \"problem\":\"heart\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/patient",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"patient-token\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"nishant@gmail.com\",\n    \"password\":\"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/patient/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patient",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All doctors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Make request",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const start = (new Date());",
+									"const end = (new Date());",
+									"",
+									"pm.globals.set(\"start\", start);",
+									"pm.globals.set(\"end\",end);",
+									"",
+									"console.log(\"date\",start,end);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{patient-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\":\"i am not feeling well\",\n    \"doctor\":\"607ad767f5c146bb4f8fef99\",\n    \"start\" : 1618798477,\n    \"end\": 1618878505\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/patient/request",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patient",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pending requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{patient-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/patient/request/pending",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patient",
+								"request",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get approved requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{patient-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/patient/request/approved",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patient",
+								"request",
+								"approved"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TEST",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
