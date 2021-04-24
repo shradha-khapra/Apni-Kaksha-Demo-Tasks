@@ -1,19 +1,17 @@
 import 'package:flutter/cupertino.dart';
 
-class CartData extends ChangeNotifier {
-  int _cartItemsCount = 0;
+class CartProvider extends ChangeNotifier {
+  int _cartItemsQuantity = 0;
 
-  int getCartItemsCount() {
-    return _cartItemsCount;
-  }
+  int get getCartItemsCount => _cartItemsQuantity;
 
-  void incrementCartItemsCount(int val) {
-    _cartItemsCount += val;
+  void incrementItemsQuantity(int val) {
+    _cartItemsQuantity += val;
     notifyListeners();
   }
 
-  void decrementCartItemsCount(int val) {
-    _cartItemsCount -= val;
+  void decrementItemsQuantity(int val) {
+    _cartItemsQuantity -= val;
     notifyListeners();
   }
 }

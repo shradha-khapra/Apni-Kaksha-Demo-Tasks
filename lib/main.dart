@@ -4,6 +4,8 @@ import 'package:apnikaksha_cart_app/provider/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'presentation/screens/card_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -13,14 +15,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider<CartData>(create: (_) => CartData())],
+      providers: [
+        ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Apni Kaksha Frontend Test',
         theme: lightThemeData,
         initialRoute: "/",
         routes: {
           "/": (context) => HomeScreen(),
+          CartScreen.route: (context) => CartScreen(),
         },
       ),
     );

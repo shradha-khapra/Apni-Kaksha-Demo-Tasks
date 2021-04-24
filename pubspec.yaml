@@ -45,7 +45,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - assets/rice/
+    - assets/images/
 
   # fonts:
   #   - family: Schyler

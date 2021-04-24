@@ -1,6 +1,6 @@
 import 'package:apnikaksha_cart_app/core/constants/colors.dart';
 import 'package:apnikaksha_cart_app/presentation/screens/card_screen.dart';
-import 'package:apnikaksha_cart_app/presentation/widgets/product_card.dart';
+import 'package:apnikaksha_cart_app/presentation/widgets/product_list.dart';
 import 'package:apnikaksha_cart_app/provider/cart_provider.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
@@ -64,11 +64,11 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Text(
             'Delivery Location',
-            style: kAppBarTextStyleTitle,
+            style: kAppBarTitleTextStyle,
           ),
           Text(
             '2/49, Pandav Road, Shahdara',
-            style: kAppBarTextStyleBody,
+            style: kAppBarBodyTextStyle,
           ),
         ],
       ),
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => CartPage(),
+                      builder: (BuildContext context) => CartScreen(),
                     ),
                   );
                 },
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        "${Provider.of<CartData>(context).getCartItemsCount()}",
+                        "${Provider.of<CartProvider>(context).getCartItemsCount}",
                         style: TextStyle(
                           fontSize: 10,
                           height: 1,
@@ -138,24 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
         labelColor: Colors.black45,
         tabs: tabs,
       ),
-    );
-  }
-}
-
-class ProductList extends StatelessWidget {
-  const ProductList({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-          padding: EdgeInsets.all(10),
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return ProductsCard();
-          }),
     );
   }
 }

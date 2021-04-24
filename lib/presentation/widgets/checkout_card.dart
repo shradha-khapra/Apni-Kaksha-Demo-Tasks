@@ -10,143 +10,145 @@ class CheckoutCard extends StatefulWidget {
 }
 
 class _CheckoutCardState extends State<CheckoutCard> {
-  int itemCount = 0;
   @override
   Widget build(BuildContext context) {
+    int itemCount = 0;
     bool addMinusIcon =
-        Provider.of<CartData>(context, listen: false).getCartItemsCount() > 0
+        Provider.of<CartProvider>(context, listen: false).getCartItemsCount > 0
             ? true
             : false;
-    return Slidable(
-      secondaryActions: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.grey[300], offset: Offset(0, -2))
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Slidable(
+        secondaryActions: <Widget>[
+          Container(
+            clipBehavior: Clip.antiAlias,
+            margin: EdgeInsets.all(5),
+            // decoration: BoxDecoration(
+            //   color: Colors.white,
+            // ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.0),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: Colors.grey[300], offset: Offset(0, -2))
+              ],
+            ),
+            child: IconSlideAction(
+              foregroundColor: Colors.white,
+              caption: 'Notes',
+              color: Color(0xFFC8C8C8),
+              icon: Icons.note_add_sharp,
+              onTap: () {},
+            ),
           ),
-          child: IconSlideAction(
-            foregroundColor: Colors.white,
-            caption: 'Notes',
-            color: Color(0xFFC8C8C8),
-            icon: Icons.note_add_sharp,
-            onTap: () {},
+          Container(
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20.0),
+              boxShadow: [
+                BoxShadow(color: Colors.grey[300], offset: Offset(0, -2))
+              ],
+            ),
+            child: IconSlideAction(
+              caption: 'Delete',
+              color: Color(0xFFFF6262),
+              icon: Icons.delete,
+              onTap: () {},
+            ),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.grey[300], offset: Offset(0, -2))
-            ],
-          ),
-          child: IconSlideAction(
-            caption: 'Delete',
-            color: Color(0xFFFF6262),
-            icon: Icons.delete,
-            onTap: () {},
-          ),
-        ),
-      ],
-      actionPane: SlidableDrawerActionPane(),
-      child: Padding(
-        padding: EdgeInsets.only(left: 0.0, right: 0.0, top: 0.0, bottom: 5.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: Container(
+        ],
+        actionPane: SlidableDrawerActionPane(),
+        child: Padding(
+          padding:
+              EdgeInsets.only(left: 0.0, right: 0.0, top: 0.0, bottom: 5.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+            child: Row(
+              children: [
+                Container(
                   padding: EdgeInsets.only(left: 5.0),
                   child: Image(
                     height: 100.0,
-                    image: AssetImage('assets/images/rice_bag1.jpg'),
+                    image: AssetImage('assets/images/rice_bag_basmati.jpg'),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Basmati',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    Text(
-                      'each',
-                      style: TextStyle(fontSize: 17.0),
-                    ),
-                    Row(
+                Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          '\$3.62',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF469A36),
-                              fontSize: 22.0),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 80.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
-                              color: Color(0xFFe8e8e8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Spinach',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
                             ),
-                            child: Row(
+                            Text(
+                              '1.22lbs',
+                              style: TextStyle(fontSize: 17.0),
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                addMinusIcon
-                                    ? Padding(
-                                        padding: EdgeInsets.only(left: 0.0),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            if (Provider.of<CartData>(context,
-                                                        listen: false)
-                                                    .getCartItemsCount() >
-                                                0) {
-                                              setState(() {
-                                                itemCount -= 1;
-                                                // ProductPage.cartItemsCount -= 1;
-                                                Provider.of<CartData>(context,
-                                                        listen: false)
-                                                    .decrementCartItemsCount(1);
-                                                if (Provider.of<CartData>(
-                                                            context,
-                                                            listen: false)
-                                                        .getCartItemsCount() <=
-                                                    0) {
-                                                  addMinusIcon = false;
-                                                }
-                                              });
-                                            }
-                                          },
-                                          child: Icon(
-                                            Icons.remove_circle,
-                                            color: Colors.orange,
-                                            size: 40.0,
-                                          ),
-                                        ),
-                                      )
-                                    : SizedBox(
-                                        width: 0.0,
-                                      ),
+                                Text(
+                                  '\$1.22',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF469A36),
+                                      fontSize: 22.0),
+                                ),
                               ],
                             ),
-                          ),
+                          ],
                         ),
+                        if (addMinusIcon)
+                          Padding(
+                            padding: EdgeInsets.only(left: 0.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                if (Provider.of<CartProvider>(context,
+                                            listen: false)
+                                        .getCartItemsCount >
+                                    0) {
+                                  setState(() {
+                                    itemCount -= 1;
+                                    // ProductPage.cartItemsCount -= 1;
+                                    Provider.of<CartProvider>(context,
+                                            listen: false)
+                                        .decrementItemsQuantity(1);
+                                    if (Provider.of<CartProvider>(context,
+                                                listen: false)
+                                            .getCartItemsCount <=
+                                        0) {
+                                      addMinusIcon = false;
+                                    }
+                                  });
+                                }
+                              },
+                              child: Icon(
+                                Icons.remove_circle_outline,
+                                color: Colors.red,
+                                size: 40.0,
+                              ),
+                            ),
+                          ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
