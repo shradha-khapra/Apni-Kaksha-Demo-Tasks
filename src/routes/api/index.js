@@ -7,11 +7,13 @@ const loginRoutes = require("./users/login");
 const userRoutes = require("./users/dashboard")
 const requestAppointmentRoutes = require("./appointments/requestAppointment")
 const requestedAppointmentsRoutes = require("./appointments/requestedAppointments")
+const myAppointmentsRoutes = require("./appointments/myAppointments")
 
 router.use("/signup", signupRoutes);
 router.use("/login", loginRoutes);
 router.use("/user", userRoutes);
 router.use("/requestAppointment",requestAppointmentRoutes);
 router.use("/requestedAppointments",requestedAppointmentsRoutes);
+router.use("/myAppointments",myAppointmentsRoutes);
 
 module.exports = router;
