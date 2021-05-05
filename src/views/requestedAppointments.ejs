@@ -34,16 +34,19 @@
 			<td><%=appointment.date_of_appointment%></td>
 			<td><%= appointment.approve_status ? "Accepted":'Pending'%></td>
 			<td><%= schema=='doctor' ? appointment.patient.name:appointment.doctor.name%></td>
-			<% if(schema=='doctor'){ %> 
+			<% if(schema=='doctor' && !appointment.approve_status){ %> 
 				<td>
 					<form
 						action="/api/acceptappointments/<%=appointment._id%>"
 						method="POST"
 					>
-						<input type="submit" value="Approve" />
+						<input type="submit" value="Approve"/>
+
 					</form>
 				</td>
-				<% } %>
+				<% }else{ %>
+					<td></td>
+					<% }%>
 			</tr>
 			<% })} %>
 	
