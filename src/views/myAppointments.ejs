@@ -17,6 +17,9 @@
 			<th>Date and Time</th>
 			<th>Status</th>
 			<th><%=schema=='doctor' ? "Patient":'Doctor'%></th>
+			<<% if(schema=='doctor'){ %> <%
+			<th>Approve</th>
+			<% })} %>
 		</tr>
 
 		<tr></tr>
@@ -26,12 +29,24 @@
 		<% if(locals.appointments){ %> <%
 		appointments.forEach(function(appointment) { %>
 
-		<tr style="color: <%= appointment.approve_status ? "Green":'Red'%>;">
+		<tr style="color: <%= appointment.approve_status ? 'Green':'Red'%>;">
 			<td><%=appointment._id%></td>
 			<td><%=appointment.date_of_appointment%></td>
 			<td><%= appointment.approve_status ? "Accepted":'Pending'%></td>
-			<td><%= schema=='doctor' ? appointment.patient.name:appointment.doctor.name%></td>
-
+			<td>
+				<%= schema=='doctor' ?
+				appointment.patient.name:appointment.doctor.name%>
+			</td>
+			<% if(schema=='doctor'){ %> <%
+			<td>
+				<form
+					action="/api/acceptappointments/<%=appointment._id%>"
+					method="POST"
+				>
+					<input type="submit" value="Approve" />
+				</form>
+			</td>
+			<% })} %>
 		</tr>
 		<% })} %>
 	</tbody>
