@@ -4,7 +4,8 @@
 	"description": "A store of all the demo tasks submitted by candidates as part of AK interviews.",
 	"main": "src/index.js",
 	"scripts": {
-		"devStart": "nodemon src/index.js"
+		"devStart": "nodemon src/index.js",
+		"start": "node src/index.js"
 	},
 	"repository": {
 		"type": "git",
