@@ -15,7 +15,7 @@ const login_handler = (req, res, user) => {
 		},
 		(err, token) => {
 			if (err) throw err;
-			res.cookie("token", "Bearer " + token).render('./dashboard',{name: user.name});
+			res.cookie("token", "Bearer " + token).redirect("/api/user")
 		}
 	);
 };
