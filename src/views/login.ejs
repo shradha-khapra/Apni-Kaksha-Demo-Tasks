@@ -1,0 +1,22 @@
+<%- include ("./partials/header"); %>
+<h1>Login</h1>
+<%- include ("./partials/messages"); %>
+
+<form action="/api/login" method="POST">
+	<div>
+		<label for="email">Email</label>
+		<input type="email" name="email" id="email" placeholder="Enter Email" />
+	</div>
+
+	<div>
+		<label for="passowrd">Password</label>
+		<input
+			type="password"
+			name="password"
+			id="password"
+			placeholder="Enter password"
+		/>
+	</div>
+
+	<input type="submit" value="Login" />
+</form>

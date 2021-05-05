@@ -1,0 +1,57 @@
+<%- include ("./partials/header"); %>
+
+<h1>SignUp</h1>
+<%- include ("./partials/messages"); %>
+<form action="/api/signup" method="POST">
+	<div>
+		<label for="name">Name</label>
+		<input
+			type="text"
+			name="name"
+			id="name"
+			placeholder="Enter Name"
+			value="<%= typeof name!= 'undefined' ? name:''%>"
+		/>
+	</div>
+	<div>
+		<label for="email">Email</label>
+		<input
+			type="email"
+			name="email"
+			id="email"
+			placeholder="Enter Email"
+			value="<%= typeof email!= 'undefined' ? email:''%>"
+		/>
+	</div>
+	<div>
+		<label for="role">Role</label>
+		<select
+			name="role"
+			id="role"
+			value="<%= typeof role!= 'undefined' ? role:''%>"
+		>
+			<option value="DOCTOR">DOCTOR</option>
+			<option value="PATIENT">PATIENT</option>
+		</select>
+	</div>
+	<div>
+		<label for="password1">Password</label>
+		<input
+			type="password"
+			name="password1"
+			id="password1"
+			placeholder="Enter password"
+		/>
+	</div>
+	<div>
+		<label for="password2">Confirm Password</label>
+		<input
+			type="password"
+			name="password2"
+			id="password2"
+			placeholder="Renter Password"
+		/>
+	</div>
+
+	<input type="submit" value="Register" />
+</form>

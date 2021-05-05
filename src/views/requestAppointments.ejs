@@ -1,0 +1,34 @@
+<%- include ("./partials/header"); %>
+
+<h1>Request Apointment</h1>
+
+<form action="/api/requestAppointment" method="POST">
+	
+
+	<div>
+		<label for="dateandtime">Date and Time of Appointment</label>
+		<input
+			type="datetime-local"
+			name="dateandtime"
+			id="dateandtime"
+		/>
+		
+	</div>
+	<div>
+		<label for="doctor">Doctor</label>
+		<select name="doctor" id="">
+			<%
+			doctors.forEach(function(doctor) { %>
+				
+				<option value="<%= doctor._id%>"><%= doctor.name%></option> 
+
+				<% })%>
+		</select>
+
+	</div>
+
+	<input type="submit" value="Request Appointment" />
+</form>
+
+
+<%- include ("./partials/success"); %>
