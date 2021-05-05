@@ -1,27 +1,29 @@
 {
-  "name": "apni-kaksha-demo-tasks",
-  "version": "1.0.0",
-  "description": "A store of all the demo tasks submitted by candidates as part of AK interviews.",
-  "main": "index.js",
-  "scripts": {
-    "devStart": "nodemon index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ayushag99/Apni-Kaksha-Demo-Tasks.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ayushag99/Apni-Kaksha-Demo-Tasks/issues"
-  },
-  "homepage": "https://github.com/ayushag99/Apni-Kaksha-Demo-Tasks#readme",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "nodemon": "^2.0.7"
-  }
+	"name": "apni-kaksha-demo-tasks",
+	"version": "1.0.0",
+	"description": "A store of all the demo tasks submitted by candidates as part of AK interviews.",
+	"main": "src/index.js",
+	"scripts": {
+		"devStart": "nodemon src/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ayushag99/Apni-Kaksha-Demo-Tasks.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ayushag99/Apni-Kaksha-Demo-Tasks/issues"
+	},
+	"homepage": "https://github.com/ayushag99/Apni-Kaksha-Demo-Tasks#readme",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"ejs": "^3.1.6",
+		"express": "^4.17.1",
+		"mongoose": "^5.12.7"
+	},
+	"devDependencies": {
+		"dotenv": "^8.2.0",
+		"nodemon": "^2.0.7"
+	}
 }
