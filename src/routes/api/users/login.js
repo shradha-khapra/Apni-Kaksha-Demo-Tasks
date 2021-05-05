@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-
+const jwt = require("jsonwebtoken");
+const passport = require("passport");
 const User = require("../../../model/User");
 
 router.get("/", (req, res) => {
@@ -25,9 +26,7 @@ router.post("/", (req, res) => {
 			errors,
 			email,
 		});
-	}
-	// Else redirect to home page
-	else {
+	} else {
 		// PASSED
 		User.findOne({ email: email })
 			.then((user) => {
@@ -42,7 +41,29 @@ router.post("/", (req, res) => {
 						.compare(password, user.password)
 						.then((isMatch) => {
 							if (isMatch) {
-								res.send("User logged IN");
+								// Creating payload for generating the token
+								const payload = {
+									id: user._id,
+									name: user.name,
+									email: user.email,
+									role: user.role,
+								};
+								jwt.sign(
+									payload,
+									process.env.SECRET,
+									{
+										expiresIn: 3600,
+									},
+									(err, token) => {
+										if (err) throw err;
+										res.cookie(
+											"token",
+											"Bearer " + token
+										).json({
+											success: true,
+										});
+									}
+								);
 							} else {
 								errors.push({
 									msg: "Password does not match",
