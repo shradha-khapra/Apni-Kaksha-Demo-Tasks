@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const Appointment = require("../../../model/Appointment");
+const User = require("../../../model/User");
 
 // GET Reqest to open the frontend of APpointment Request
 router.get(
@@ -15,7 +16,11 @@ router.get(
 			res.redirect("/api/user");
 			return;
 		}
-		res.render("requestAppointments");
+		User.find({ role: "DOCTOR" })
+			.then((doctors) => {
+				res.render("requestAppointments", { doctors });
+			})
+			.catch((err) => console.log(err));
 	}
 );
 
@@ -32,13 +37,22 @@ router.post(
 			const new_appointment = new Appointment({
 				date_of_appointment: req.body.dateandtime,
 				patient: req.user.id,
+				doctor: req.body.doctor,
 			});
-            new_appointment.save().then(appointment=>{
-                if(appointment)
-                res.render("requestAppointments", {msg:"Appointment Successfullly Booked."});
-            }).catch(err=>console.log(err))
-
-			
+			new_appointment
+				.save()
+				.then((appointment) => {
+					if (appointment)
+						User.find({ role: "DOCTOR" })
+							.then((doctors) => {
+								res.render("requestAppointments", {
+									doctors,
+									msg: "Appointment Successfullly Booked.",
+								});
+							})
+							.catch((err) => console.log(err));
+				})
+				.catch((err) => console.log(err));
 		}
 	}
 );

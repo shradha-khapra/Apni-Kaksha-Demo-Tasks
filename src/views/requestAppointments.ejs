@@ -10,6 +10,19 @@
 			name="dateandtime"
 			id="dateandtime"
 		/>
+		
+	</div>
+	<div>
+		<label for="doctor">Doctor</label>
+		<select name="doctor" id="">
+			<%
+			doctors.forEach(function(doctor) { %>
+				
+				<option value="<%= doctor._id%>"><%= doctor.name%></option> 
+
+				<% })%>
+		</select>
+
 	</div>
 
 	<input type="submit" value="Request Appointment" />
