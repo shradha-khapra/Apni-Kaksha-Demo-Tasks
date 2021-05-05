@@ -1,6 +1,7 @@
 <h1>SignUp</h1>
+<%- include ("./partials/messages"); %>
 
-<form action="/api/signup" method="POST">
+<form action="/api/login" method="POST">
 	<div>
 		<label for="email">Email</label>
 		<input type="email" name="email" id="email" placeholder="Enter Email" />
@@ -10,11 +11,11 @@
 		<label for="passowrd">Password</label>
 		<input
 			type="password"
-			name="passowrd"
-			id="passowrd"
+			name="password"
+			id="password"
 			placeholder="Enter password"
 		/>
 	</div>
 
-	<input type="submit" value="Register" />
+	<input type="submit" value="Login" />
 </form>
