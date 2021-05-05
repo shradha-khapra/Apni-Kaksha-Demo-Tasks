@@ -1,3 +1,5 @@
+<%- include ("./partials/header"); %>
+
 <h1>Requested Apointments</h1>
 
 <style>
@@ -14,7 +16,7 @@
 			<th>id</th>
 			<th>Date and Time</th>
 			<th>Status</th>
-			<th>Doctor</th>
+			<th><%=schema=='doctor' ? "Patient":'Doctor'%></th>
 		</tr>
 
 		<tr></tr>
@@ -28,7 +30,8 @@
 			<td><%=appointment._id%></td>
 			<td><%=appointment.date_of_appointment%></td>
 			<td><%= appointment.approve_status ? "Accepted":'Pending'%></td>
-			<td><%= appointment.doctor ? appointment.doctor.name: '--'%></td>
+			<td><%= schema=='doctor' ? appointment.patient.name:appointment.doctor.name%></td>
+
 		</tr>
 		<% })} %>
 	</tbody>
