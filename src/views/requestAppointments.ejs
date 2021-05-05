@@ -1,0 +1,19 @@
+<h1>Request Apointment</h1>
+
+<form action="/api/requestAppointment" method="POST">
+	
+
+	<div>
+		<label for="dateandtime">Date and Time of Appointment</label>
+		<input
+			type="datetime-local"
+			name="dateandtime"
+			id="dateandtime"
+		/>
+	</div>
+
+	<input type="submit" value="Request Appointment" />
+</form>
+
+
+<%- include ("./partials/success"); %>
