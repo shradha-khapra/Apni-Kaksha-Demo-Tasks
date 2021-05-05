@@ -18,7 +18,7 @@ router.get(
 		}
 		User.find({ role: "DOCTOR" })
 			.then((doctors) => {
-				res.render("requestAppointments", { doctors });
+				res.render("requestAppointments", { doctors ,user:req.user});
 			})
 			.catch((err) => console.log(err));
 	}
@@ -47,6 +47,7 @@ router.post(
 							.then((doctors) => {
 								res.render("requestAppointments", {
 									doctors,
+									user:req.user,
 									msg: "Appointment Successfullly Booked.",
 								});
 							})

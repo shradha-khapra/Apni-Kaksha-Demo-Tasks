@@ -20,7 +20,7 @@ router.get(
         Appointment.find(query.search).populate(query.populate).then(
             appointments=>{
                     console.log(appointments)
-                res.render("requestedAppointments",{appointments,schema:query.schema});
+                res.render("requestedAppointments",{appointments,schema:query.schema,user: req.user});
             }
         ).catch()
 		

@@ -1,20 +1,35 @@
 <header>
-    <nav>
-        <ul style="list-style: none; display: flex; ">
-            <li><a href="/api/user">User</a></li>
-            <li><a href="/api/requestAppointment">Request Appointment</a></li>
-            <li><a href="/api/requestedAppointments">Requested Appointments</a></li>
-            <li><a href="/api/myappointments">My Appointments</a></li>
-            <li style="margin-left: auto;"><a href="/api/logout">Logout</a></li>
+        
+        
+</nav>
+	 
+	<nav>
+		<ul style="list-style: none; display: flex">
+			<% if( locals.user){%>
 
-            
-        </ul>
-    </nav>
+			<li><a href="/api/user">User</a></li>
+			<% if( locals.user.role=="PATIENT"){%>
+			<li><a href="/api/requestAppointment">Request Appointment</a></li>
+			<%}%>
+			<li>
+				<a href="/api/requestedAppointments">Requested Appointments</a>
+			</li>
+			<li><a href="/api/myappointments">My Appointments</a></li>
+
+			<li style="margin-left: auto"><a href="/api/logout">Logout</a></li>
+			<%}else{%>
+			<li><a href="/api/login">Login</a></li>
+			<li><a href="/api/signup">Signup</a></li>
+			<%}%>
+		</ul>
+	</nav><% if( locals.user){%>
+    <h4>User name: <%= locals.user.name%></h4>
+        <h4>User Type: <%= locals.user.role%></h4>
+        <%}%>
 </header>
 
 <style>
-
-    li{
-        padding: 20px;
-    }
+	li {
+		padding: 20px;
+	}
 </style>
