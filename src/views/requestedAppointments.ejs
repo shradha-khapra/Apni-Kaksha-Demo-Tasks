@@ -1,0 +1,35 @@
+<h1>Requested Apointments</h1>
+
+<style>
+	td,
+	th {
+		border: 1px solid #999;
+		padding: 0.5rem;
+	}
+</style>
+
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Date and Time</th>
+			<th>Status</th>
+			<th>Doctor</th>
+		</tr>
+
+		<tr></tr>
+	</thead>
+
+	<tbody>
+		<% if(locals.appointments){ %> <%
+		appointments.forEach(function(appointment) { %>
+
+		<tr style="color: <%= appointment.approve_status ? "Green":'Red'%>;">
+			<td><%=appointment._id%></td>
+			<td><%=appointment.date_of_appointment%></td>
+			<td><%= appointment.approve_status ? "Accepted":'Pending'%></td>
+			<td><%= appointment.doctor ? appointment.doctor.name: '--'%></td>
+		</tr>
+		<% })} %>
+	</tbody>
+</table>
