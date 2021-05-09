@@ -1,4 +1,4 @@
 {
     "jwtSecret": "thisis s s sjekfnrkgn",
-    "mongoURI": "mongodb+srv://test:test@cluster0.v6kzz.mongodb.net/apnikaksha?retryWrites=true&w=majority"
+    "mongoURI": "fill the uri"
 }
