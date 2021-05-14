@@ -1,0 +1,4 @@
+{
+    "jwtSecret": "thisis s s sjekfnrkgn",
+    "mongoURI": "fill the uri"
+}
