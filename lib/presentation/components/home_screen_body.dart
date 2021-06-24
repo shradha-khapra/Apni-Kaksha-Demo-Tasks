@@ -26,13 +26,15 @@ class HomeScreenBody extends StatelessWidget {
         ),
         Categories(),
         Expanded(
-            child: ListView.builder(
-                itemCount: riceList!.length,
-                itemBuilder: (context, index) => SingleProductView(
-                      screenWidth: _screenWidth,
-                      riceList: riceList,
-                      currentItem: riceList![index],
-                    ))),
+          child: ListView.builder(
+            itemCount: riceList!.length,
+            itemBuilder: (context, index) => SingleProductView(
+              screenWidth: _screenWidth,
+              currentItem: riceList![index],
+              isInCart: false,
+            ),
+          ),
+        ),
       ],
     );
   }

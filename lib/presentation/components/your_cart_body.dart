@@ -4,6 +4,7 @@ import 'package:shopit/core/constants/utils.dart';
 import 'package:shopit/core/themes/app_theme.dart';
 import 'package:shopit/data/bloc/product_bloc.dart';
 import 'package:shopit/data/models/product.dart';
+import 'package:shopit/presentation/components/product_view.dart';
 
 class YourCartBody extends StatelessWidget {
   final _theme = AppTheme.defaultTheme;
@@ -22,6 +23,12 @@ class YourCartBody extends StatelessWidget {
                 left: Utils.defaultPadding),
             child: Text("Your Cart", style: _theme.textTheme.headline1),
           ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: Utils.defaultPadding),
+            child: Text(
+                "There are currently ${BlocProvider.of<ProductBloc>(context).totalItems} items in your cart"),
+          ),
           Expanded(
             child: ListView.builder(
                 itemCount:
@@ -29,57 +36,51 @@ class YourCartBody extends StatelessWidget {
                 itemBuilder: (context, index) {
                   Product _product =
                       BlocProvider.of<ProductBloc>(context).cartProducts[index];
-                  return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            child: Image.asset(_product.imagePath!),
-                            height: 160,
-                          ),
-                          SizedBox(width: 25),
-                          Expanded(child: Text('${_product.productName}')),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text(
-                                  '${_product.productPrice}\$',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                    "In Cart: ${BlocProvider.of<ProductBloc>(context).quantityOfEachId[_product.productId]}"),
-                              ],
+                  return Dismissible(
+                    background: Container(
+                      color: AppTheme.defaultTheme.primaryColorLight,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.delete, color: Colors.white),
+                            Text(
+                              "Removing ${_product.productName} from cart",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             ),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
-                            onPressed: () =>
-                                BlocProvider.of<ProductBloc>(context)
-                                    .add(DeleteFromCart(product: _product)),
-                          )
-                        ],
+                          ],
+                        ),
                       ),
                     ),
+                    key: Key(_product.productId.toString()),
+                    onDismissed: (direction) =>
+                        BlocProvider.of<ProductBloc>(context)
+                            .add(RemoveItemFromCart(product: _product)),
+                    child: SingleProductView(
+                        screenWidth: _screenWidth,
+                        currentItem: _product,
+                        isInCart: true),
                   );
                 }),
           ),
-          BlocProvider.of<ProductBloc>(context).cartProducts.length > 0
-              ? Card(
-                  elevation: 12,
-                  child: Container(
-                    width: double.infinity,
-                    color: Colors.deepOrange,
-                    padding: EdgeInsets.all(12),
-                    child: Text(
-                      "Total Price: ${BlocProvider.of<ProductBloc>(context).totalCartCost}",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                )
-              : Container()
+          Padding(
+            padding: const EdgeInsets.all(Utils.defaultPadding),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  "Total Price: ",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text("₹${BlocProvider.of<ProductBloc>(context).totalCartCost}",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35,
+                        color: AppTheme.defaultTheme.primaryColor)),
+              ],
+            ),
+          ),
         ],
       ),
     );

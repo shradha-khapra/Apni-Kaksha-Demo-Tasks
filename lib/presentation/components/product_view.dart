@@ -9,13 +9,14 @@ class SingleProductView extends StatelessWidget {
   const SingleProductView({
     Key? key,
     required double screenWidth,
-    required this.riceList,
     this.currentItem,
+    this.isInCart,
   })  : _screenWidth = screenWidth,
         super(key: key);
 
   final double _screenWidth;
-  final List<Product>? riceList;
+  final isInCart;
+
   final Product? currentItem;
 
   @override
@@ -72,6 +73,7 @@ class SingleProductView extends StatelessWidget {
                                     BlocProvider.of<ProductBloc>(context).add(
                                         DeleteFromCart(product: _currentItem)),
                                 icon: Icon(Icons.remove),
+                                isInCart: isInCart,
                               ),
                               Container(
                                 alignment: Alignment.center,
@@ -89,6 +91,7 @@ class SingleProductView extends StatelessWidget {
                                     BlocProvider.of<ProductBloc>(context)
                                         .add(AddToCart(product: _currentItem)),
                                 icon: Icon(Icons.add),
+                                isInCart: isInCart,
                               ),
                             ],
                           ),
@@ -111,11 +114,13 @@ class SingleProductView extends StatelessWidget {
 }
 
 class QuantityToCart extends StatelessWidget {
+  final isInCart;
   final iconAction;
   final icon;
   const QuantityToCart({
     Key? key,
     required double screenWidth,
+    this.isInCart,
     this.iconAction,
     this.icon,
   })  : _screenWidth = screenWidth,
@@ -128,7 +133,9 @@ class QuantityToCart extends StatelessWidget {
     return Container(
       height: _screenWidth / 9,
       width: _screenWidth / 9,
-      color: AppTheme.defaultTheme.primaryColor,
+      color: isInCart
+          ? AppTheme.defaultTheme.primaryColorLight
+          : AppTheme.defaultTheme.primaryColor,
       child: IconButton(
         color: Colors.white,
         icon: icon,

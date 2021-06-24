@@ -10,6 +10,7 @@ class AppTheme {
     // scaffoldBackgroundColor: const Color(0xffF8F8F6),
     backgroundColor: Colors.white,
     accentColor: const Color(0xff999999),
+    primaryColorLight: const Color(0xffF77C85),
     fontFamily: "Inter",
     textTheme: TextTheme(
       headline1: TextStyle(

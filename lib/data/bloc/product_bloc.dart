@@ -15,6 +15,11 @@ class DeleteFromCart extends BlocEvent {
   DeleteFromCart({this.product});
 }
 
+class RemoveItemFromCart extends BlocEvent {
+  Product? product;
+  RemoveItemFromCart({this.product});
+}
+
 class LoadingState extends BlocState {}
 
 class SuccessState extends BlocState {
@@ -56,9 +61,23 @@ class ProductBloc extends Bloc<BlocEvent, BlocState> {
         totalCartCost -= event.product!.productPrice!;
 
         if (quantityOfEachId[id]! == 1) {
-          cartProducts.remove(event.product!);
+          cartProducts.remove(currentProduct);
         }
         quantityOfEachId[id] = quantityOfEachId[id]! - 1;
+      }
+
+      if (event is RemoveItemFromCart) {
+        Product currentProduct = event.product!;
+        int id = currentProduct.productId!;
+
+        int currentQuantityInCart = quantityOfEachId[id]!;
+        int totalCostOfItem =
+            currentQuantityInCart * currentProduct.productPrice!;
+
+        totalCartCost = totalCartCost - totalCostOfItem;
+        totalItems -= currentQuantityInCart;
+        quantityOfEachId[id] = 0;
+        cartProducts.remove(currentProduct);
       }
 
       yield SuccessState(count: totalItems);
