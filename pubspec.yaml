@@ -11,9 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_bloc: ^7.0.1
   flutter_svg: ^0.22.0
   cupertino_icons: ^1.0.2
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

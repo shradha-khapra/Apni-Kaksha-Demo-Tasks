@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopit/core/constants/utils.dart';
 import 'package:shopit/core/themes/app_theme.dart';
+import 'package:shopit/data/bloc/product_bloc.dart';
 import 'package:shopit/data/models/product.dart';
 
 class SingleProductView extends StatelessWidget {
@@ -68,7 +70,7 @@ class SingleProductView extends StatelessWidget {
                                 Container(
                                   alignment: Alignment.center,
                                   height: _screenWidth / 9,
-                                  width: _screenWidth / 9,
+                                  width: _screenWidth / 7,
                                   child: Text(
                                     _currentItem.quantityInCart.toString(),
                                     textAlign: TextAlign.center,
@@ -84,7 +86,9 @@ class SingleProductView extends StatelessWidget {
                               ],
                             ),
                           )
-                        : AddToBagButton(screenWidth: _screenWidth),
+                        : AddToBagButton(
+                            screenWidth: _screenWidth,
+                            currentProduct: _currentItem),
                   ],
                 ),
               ),
@@ -125,9 +129,11 @@ class QuantityToCart extends StatelessWidget {
 }
 
 class AddToBagButton extends StatelessWidget {
+  final Product? currentProduct;
   const AddToBagButton({
     Key? key,
     required double screenWidth,
+    required this.currentProduct,
   })  : _screenWidth = screenWidth,
         super(key: key);
 
@@ -141,11 +147,13 @@ class AddToBagButton extends StatelessWidget {
         width: _screenWidth,
         color: AppTheme.defaultTheme.primaryColor,
         child: TextButton(
-            child: Text(
-              "Add To Bag",
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {}),
+          child: Text(
+            "Add To Bag",
+            style: TextStyle(color: Colors.white),
+          ),
+          onPressed: () => BlocProvider.of<ProductBloc>(context)
+              .add(AddToCart(prd: currentProduct)),
+        ),
       ),
     );
   }

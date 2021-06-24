@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/core/constants/strings.dart';
 import 'package:shopit/core/exceptions/route_exception.dart';
 import 'package:shopit/presentation/screens/home_screens.dart';
 
