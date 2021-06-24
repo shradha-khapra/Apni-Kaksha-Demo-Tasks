@@ -7,6 +7,7 @@ import 'package:shopit/data/bloc/product_bloc.dart';
 import 'package:shopit/data/models/demi_data.dart';
 import 'package:shopit/data/models/product.dart';
 import 'package:shopit/presentation/components/home_screen_body.dart';
+import 'package:shopit/presentation/router/app_router.dart';
 
 class HomeScreen extends StatelessWidget {
   final _theme = AppTheme.defaultTheme;
@@ -42,7 +43,9 @@ class HomeScreen extends StatelessWidget {
         Stack(
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, AppRouter.cart);
+              },
               icon: SvgPicture.asset(
                 "assets/icons/cart.svg",
                 color: _theme.accentColor,
