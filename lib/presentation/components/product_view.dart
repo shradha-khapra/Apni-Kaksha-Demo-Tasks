@@ -152,7 +152,7 @@ class AddToBagButton extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
           onPressed: () => BlocProvider.of<ProductBloc>(context)
-              .add(AddToCart(prd: currentProduct)),
+              .add(AddToCart(product: currentProduct)),
         ),
       ),
     );

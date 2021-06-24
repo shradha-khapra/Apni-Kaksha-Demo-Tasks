@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                 backgroundColor: _theme.primaryColor,
                 child: BlocBuilder<ProductBloc, BlocState>(
                   builder: (context, state) => Text(
-                    "${BlocProvider.of<ProductBloc>(context).cartProducts.length}",
+                    "${BlocProvider.of<ProductBloc>(context).totalItems}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
