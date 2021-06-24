@@ -1,5 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopit/data/models/product.dart';
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:shopit/data/models/product.dart";
 
 abstract class BlocEvent {}
 
