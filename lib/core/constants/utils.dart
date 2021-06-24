@@ -1,3 +1,3 @@
 class Utils {
-  static final defaultPadding = 20.0;
+  static const defaultPadding = 20.0;
 }

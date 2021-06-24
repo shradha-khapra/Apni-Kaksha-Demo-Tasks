@@ -2,19 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopit/core/constants/utils.dart';
 import 'package:shopit/core/themes/app_theme.dart';
+import 'package:shopit/presentation/components/home_screen_body.dart';
 
 class HomeScreen extends StatelessWidget {
   final _theme = AppTheme.defaultTheme;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _createAppBar());
+    return Scaffold(
+      appBar: _createAppBar(),
+      body: HomeScreenBody(),
+    );
   }
 
   AppBar _createAppBar() {
     return AppBar(
       backgroundColor: _theme.backgroundColor,
+      leading: IconButton(
+        onPressed: () {},
+        icon: SvgPicture.asset(
+          "assets/icons/back.svg",
+        ),
+      ),
       elevation: 0,
-      title: Text("Browse Products"),
+      title: SvgPicture.asset(
+        "assets/icons/logo.svg",
+        height: 50,
+      ),
       actions: <Widget>[
         IconButton(
           onPressed: () {},
