@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopit/core/constants/utils.dart';
 import 'package:shopit/core/themes/app_theme.dart';
-import 'package:shopit/data/models/demi_data.dart';
 import 'package:shopit/data/models/product.dart';
 import 'package:shopit/presentation/components/home_screen_categories.dart';
 import 'package:shopit/presentation/components/product_view.dart';

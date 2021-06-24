@@ -23,7 +23,7 @@ class DummyDataService {
       productName: "Hemani Rice",
       description: "Gold Standard Rice Fit For All",
       productPrice: 199,
-      imagePath: "assets/images/hemani.jpeg",
+      imagePath: "assets/images/hemani.jpg",
       quantityInCart: 0,
     ),
     Product(
