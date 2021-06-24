@@ -28,12 +28,6 @@ class HomeScreen extends StatelessWidget {
   AppBar _createAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: _theme.backgroundColor,
-      leading: IconButton(
-        onPressed: () {},
-        icon: SvgPicture.asset(
-          "assets/icons/back.svg",
-        ),
-      ),
       elevation: 0,
       title: SvgPicture.asset(
         "assets/icons/logo.svg",
@@ -53,19 +47,26 @@ class HomeScreen extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.topRight,
-              child: CircleAvatar(
-                radius: 12,
-                backgroundColor: _theme.primaryColor,
-                child: BlocBuilder<ProductBloc, BlocState>(
-                  builder: (context, state) => Text(
-                    "${BlocProvider.of<ProductBloc>(context).totalItems}",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                      color: Colors.white,
+              child: BlocBuilder<ProductBloc, BlocState>(
+                builder: (context, state) {
+                  var itemCount =
+                      BlocProvider.of<ProductBloc>(context).totalItems;
+                  if (itemCount == 0) {
+                    return Container();
+                  }
+                  return CircleAvatar(
+                    radius: 12,
+                    backgroundColor: _theme.primaryColor,
+                    child: Text(
+                      "${BlocProvider.of<ProductBloc>(context).totalItems}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ),
           ],

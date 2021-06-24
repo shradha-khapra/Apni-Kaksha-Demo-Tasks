@@ -57,38 +57,48 @@ class SingleProductView extends StatelessWidget {
                         color: AppTheme.defaultTheme.primaryColor,
                       ),
                     ),
-                    _currentItem.quantityInCart! > 0
-                        ? Container(
-                            width: _screenWidth,
-                            child: Row(
-                              children: [
-                                QuantityToCart(
-                                  screenWidth: _screenWidth,
-                                  iconAction: () {},
-                                  icon: Icon(Icons.remove),
+                    BlocBuilder<ProductBloc, BlocState>(
+                        builder: (context, state) {
+                      var quantityInCart = BlocProvider.of<ProductBloc>(context)
+                          .quantityOfEachId[_currentItem.productId]!;
+                      if (quantityInCart > 0) {
+                        return Container(
+                          width: _screenWidth,
+                          child: Row(
+                            children: [
+                              QuantityToCart(
+                                screenWidth: _screenWidth,
+                                iconAction: () =>
+                                    BlocProvider.of<ProductBloc>(context).add(
+                                        DeleteFromCart(product: _currentItem)),
+                                icon: Icon(Icons.remove),
+                              ),
+                              Container(
+                                alignment: Alignment.center,
+                                height: _screenWidth / 9,
+                                width: _screenWidth / 7,
+                                child: Text(
+                                  "${BlocProvider.of<ProductBloc>(context).quantityOfEachId[_currentItem.productId]}",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  height: _screenWidth / 9,
-                                  width: _screenWidth / 7,
-                                  child: Text(
-                                    _currentItem.quantityInCart.toString(),
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                QuantityToCart(
-                                  screenWidth: _screenWidth,
-                                  iconAction: () {},
-                                  icon: Icon(Icons.add),
-                                ),
-                              ],
-                            ),
-                          )
-                        : AddToBagButton(
-                            screenWidth: _screenWidth,
-                            currentProduct: _currentItem),
+                              ),
+                              QuantityToCart(
+                                screenWidth: _screenWidth,
+                                iconAction: () =>
+                                    BlocProvider.of<ProductBloc>(context)
+                                        .add(AddToCart(product: _currentItem)),
+                                icon: Icon(Icons.add),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+
+                      return AddToBagButton(
+                          screenWidth: _screenWidth,
+                          currentProduct: _currentItem);
+                    }),
                   ],
                 ),
               ),
