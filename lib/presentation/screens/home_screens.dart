@@ -40,10 +40,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, AppRouter.cart);
               },
-              icon: SvgPicture.asset(
-                "assets/icons/cart.svg",
-                color: _theme.accentColor,
-              ),
+              icon: Icon(Icons.shopping_cart),
             ),
             Align(
               alignment: Alignment.topRight,
