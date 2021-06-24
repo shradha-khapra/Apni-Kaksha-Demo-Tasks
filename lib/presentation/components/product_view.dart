@@ -8,15 +8,17 @@ class SingleProductView extends StatelessWidget {
     Key? key,
     required double screenWidth,
     required this.riceList,
+    this.currentItem,
   })  : _screenWidth = screenWidth,
         super(key: key);
 
   final double _screenWidth;
   final List<Product>? riceList;
+  final Product? currentItem;
 
   @override
   Widget build(BuildContext context) {
-    Product _currentItem = riceList![0];
+    Product _currentItem = currentItem!;
     return Padding(
       padding: const EdgeInsets.all(Utils.defaultPadding),
       child: Container(

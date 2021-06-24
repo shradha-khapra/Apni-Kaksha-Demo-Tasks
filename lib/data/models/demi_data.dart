@@ -31,7 +31,7 @@ class DummyDataService {
       productName: "Khusbhoo Rice",
       description: "Gold Standard Rice Fit For All",
       productPrice: 379,
-      imagePath: "assets/images/khushbhoo.jpg",
+      imagePath: "assets/images/khusbhoo.jpg",
       quantityInCart: 0,
     ),
   ];

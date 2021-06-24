@@ -26,7 +26,14 @@ class HomeScreenBody extends StatelessWidget {
           child: Text("Browse Products", style: _theme.textTheme.headline1),
         ),
         Categories(),
-        SingleProductView(screenWidth: _screenWidth, riceList: riceList),
+        Expanded(
+            child: ListView.builder(
+                itemCount: riceList!.length,
+                itemBuilder: (context, index) => SingleProductView(
+                      screenWidth: _screenWidth,
+                      riceList: riceList,
+                      currentItem: riceList![index],
+                    ))),
       ],
     );
   }
