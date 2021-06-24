@@ -16,7 +16,7 @@ class DummyDataService {
       description: "Gold Standard Rice Fit For All",
       productPrice: 249,
       imagePath: "assets/images/daawat.jpg",
-      quantityInCart: 0,
+      quantityInCart: 1,
     ),
     Product(
       productId: 3,

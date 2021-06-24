@@ -2,15 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopit/core/constants/utils.dart';
 import 'package:shopit/core/themes/app_theme.dart';
+import 'package:shopit/data/models/demi_data.dart';
+import 'package:shopit/data/models/product.dart';
 import 'package:shopit/presentation/components/home_screen_body.dart';
 
 class HomeScreen extends StatelessWidget {
   final _theme = AppTheme.defaultTheme;
+  final _dataService = DummyDataService();
+
+  List<Product> getProducts() {
+    return _dataService.getRiceProducts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _createAppBar(),
-      body: HomeScreenBody(),
+      body: HomeScreenBody(riceList: getProducts()),
     );
   }
 
