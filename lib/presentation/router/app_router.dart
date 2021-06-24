@@ -12,9 +12,7 @@ class AppRouter {
     switch (settings.name) {
       case home:
         return MaterialPageRoute(
-          builder: (_) => HomeScreen(
-            title: Strings.homeScreenTitle,
-          ),
+          builder: (_) => HomeScreen(),
         );
       default:
         throw const RouteException('Route not found!');
